@@ -1,0 +1,13 @@
+.my-navbar {
+    /*background-color: red;*/
+    color: white;
+    font-family: 'Lobster Two',cursive;
+
+    background: linear-gradient(to bottom, #a42121 0, #941e1e 100%);
+    box-shadow: 0 5px 5px rgb(0 0 0 / 20%);
+    font-size: 20px;
+}
+
+.logo {
+    color: blue;
+}

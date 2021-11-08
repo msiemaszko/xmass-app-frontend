@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router";
+import AuthService from '../../services/auth-service'
 import {useHistory} from "react-router-dom";
 import {Button, Image} from "react-bootstrap";
+import ApiService from '../../services/api-service'
 
 
 import gift from '../../assets/images/gift.gif'
@@ -12,34 +14,30 @@ import Gift from "../Gift/Gift";
 
 const MemberHome = (props) => {
 
-    // const user = AuthService.getUser();
+    const user = AuthService.getUser();
 
     const history = useHistory();
     const logOutHandler = () => {
-        // AuthService.logout(history);
+        AuthService.logout(history);
         props.setLogged(false);
         history.push("/");
     }
 
-    // console.log("zalogowany:", user);
-    // console.log("type:", AuthService.getType());
-    // console.log("token", AuthService.genAuthHeader())
-    // console.log("token", AuthService.genAuthHeader())
-
     const [event, setEvent] = useState(null);
     useEffect(()=>{
-        // ApiService.getWithAuthorization("/api/events/details")
-        //     .then(result => {
-        //         console.log(result)
-        //         if (result.status === 200) {
-        //             setEvent(result.data);
-        //         }})
+        ApiService.getWithAuthorization("/api/events/details")
+            .then(result => {
+                console.log(result)
+                if (result.status === 200) {
+                    setEvent(result.data);
+                }})
     }, [])
 
 
     const [animuj, setAnimuj] = useState(true)
 
     return (
+
         <div style={{
             // border: "1px solid blue",
             background: "lightgray",
@@ -48,6 +46,29 @@ const MemberHome = (props) => {
             // height: "205px"
 
         }}>
+
+            <div>
+                member home<br/>
+                {user.full_name}<br/>
+                <Button onClick={logOutHandler}>Logout</Button>
+
+                {event ?
+                    <div>
+                        Twoje wydarzenie {event.name}<br/>
+                        {event.description}<br/>
+                        kiedy to nastąpi: {event.date}<br/>
+                        autorem wydarzenia jest: {event.user_created.full_name}, {event.user_created.email}<br/>
+
+                        {event.completed ?
+                            <div>Wylosowałeś takiego typa: {event.member_to.full_name} ({event.member_to.email})</div>
+                            : <div>Losowanie w tym wydarzeniu jeszcze się nie odbyło.</div>
+                        }
+
+                    </div>
+                    :
+                    <div>loading</div>
+                }
+            </div>
 
             <div className="container_" style={{
                 // width: "100vw",

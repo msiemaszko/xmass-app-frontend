@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory, useParams} from "react-router";
+import ApiService from '../../services/api-service'
 import {Button, Col, Form, Row} from "react-bootstrap";
 import ErrorAlert from "../../components/Alert/ErrorAlert";
 import Loader from "../../components/Loader/Loader";
+import AuthService from '../../services/auth-service'
 
 const Activation = (props) => {
 
@@ -32,40 +34,40 @@ const Activation = (props) => {
     }
     const handleFormSubmit = event => {
         event.preventDefault();
-        // ApiService.post("/api/invitation/accept/" + activation_code, {
-        //     "full_name": name,
-        //     "password": password
-        // })
-        //     .then(result => {
-        //         if (result.status === 200) {
-        //             const results = result.data.results
-        //             const response = {
-        //                 status: 200,
-        //                 data: {
-        //                     type: results.type,
-        //                     user: results.user,
-        //                     access_token: results.access_token
-        //                 }
-        //             }
-        //
-        //             // oszukane logowanie dla membera
-        //             AuthService.storeLoginDataFromResponse(response)
-        //             props.setLogged(true)
-        //             history.push("/");
-        //         }
-        //         else {
-        //             showError(result.data.detail)
-        //         }
-        //     })
+        ApiService.post("/api/invitation/accept/" + activation_code, {
+            "full_name": name,
+            "password": password
+        })
+            .then(result => {
+                if (result.status === 200) {
+                    const results = result.data.results
+                    const response = {
+                        status: 200,
+                        data: {
+                            type: results.type,
+                            user: results.user,
+                            access_token: results.access_token
+                        }
+                    }
+
+                    // oszukane logowanie dla membera
+                    AuthService.storeLoginDataFromResponse(response)
+                    props.setLogged(true)
+                    history.push("/");
+                }
+                else {
+                    showError(result.data.detail)
+                }
+            })
     }
 
     useEffect(() => {
-        // ApiService.get("/api/invitation/details/" + activation_code)
-        //     .then(result => {
-        //         const invitation_ = result.data;
-        //         setInvitation(invitation_)
-        //     })
-        // ;
+        ApiService.get("/api/invitation/details/" + activation_code)
+            .then(result => {
+                const invitation_ = result.data;
+                setInvitation(invitation_)
+            })
+        ;
     }, []);
 
 

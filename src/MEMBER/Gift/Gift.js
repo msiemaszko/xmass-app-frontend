@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import MemberHome from "../MemberHome/MemberHome";
 
 import gift from '../../assets/images/gift.gif'
 import gift_na from '../../assets/images/gift_na.png'

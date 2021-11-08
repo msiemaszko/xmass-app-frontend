@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useParams} from "react-router";
 import ErrorAlert from "../../components/Alert/ErrorAlert";
 import {Button, Form} from "react-bootstrap";
+import AuthService from "../../services/auth-service";
 import {useHistory} from "react-router-dom";
 
 const MemberLogin = (props) => {
@@ -32,23 +33,23 @@ const MemberLogin = (props) => {
     const handleFormSubmit = event => {
         event.preventDefault();
 
-        // AuthService.member_login(email, password)
-        //     .then(authResponse => {
-        //         switch (authResponse.status) {
-        //             case 200:
-        //                 props.setLogged(true);
-        //                 history.push("/")
-        //                 break;
-        //
-        //             case 400:
-        //                 showError(authResponse.data.detail);
-        //                 break;
-        //
-        //             default:
-        //                 showError("Logowanie nie udane.")
-        //                 console.log("Logowanie nie udane", authResponse)
-        //         }
-        //     });
+        AuthService.member_login(email, password)
+            .then(authResponse => {
+                switch (authResponse.status) {
+                    case 200:
+                        props.setLogged(true);
+                        history.push("/")
+                        break;
+
+                    case 400:
+                        showError(authResponse.data.detail);
+                        break;
+
+                    default:
+                        showError("Logowanie nie udane.")
+                        console.log("Logowanie nie udane", authResponse)
+                }
+            });
     }
 
     return (
