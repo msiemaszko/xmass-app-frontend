@@ -10,12 +10,6 @@ import footer from '../../assets/images/footer.png'
 import bg from '../../assets/images/top-bg.png'
 import Gift from "../Gift/Gift";
 
-import {computeHeadingLevel} from "@testing-library/react";
-
-import $ from 'jquery';
-import Snowfall from 'react-snowfall'
-
-
 const MemberHome = (props) => {
 
     // const user = AuthService.getUser();
