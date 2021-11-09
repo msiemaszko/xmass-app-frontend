@@ -1,16 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router";
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router";
 import AuthService from '../../services/auth-service'
-import {useHistory} from "react-router-dom";
-import {Button, Image} from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { Button, Image } from "react-bootstrap";
 import ApiService from '../../services/api-service'
 
-
-import gift from '../../assets/images/gift.gif'
-import gift_na from '../../assets/images/gift_na.png'
-import footer from '../../assets/images/footer.png'
-import bg from '../../assets/images/top-bg.png'
 import Gift from "../Gift/Gift";
+
+
+import ReactDOM from 'react-dom'
+import Snowfall from 'react-snowfall'
+
+// ReactDOM.render(
+//     <div style={{ height: 400, width: 400, background: '#282c34' }}>
+//         <Snowfall />
+//     </div>,
+//     document.querySelector('#app')
+// )
 
 const MemberHome = (props) => {
 
@@ -24,155 +30,78 @@ const MemberHome = (props) => {
     }
 
     const [event, setEvent] = useState(null);
-    useEffect(()=>{
+    useEffect(() => {
         ApiService.getWithAuthorization("/api/events/details")
             .then(result => {
                 console.log(result)
                 if (result.status === 200) {
                     setEvent(result.data);
-                }})
+                }
+            })
     }, [])
 
 
     const [animuj, setAnimuj] = useState(true)
 
     return (
+        <>
+            <nav className="navbar navbar-dark bg-dark" aria-label="First navbar example" style={{ background: "linear-gradient(to bottom, #a42121 0, #941e1e 100%)" }} >
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="#">Witaj, {user.full_name}</a>
 
-        <div style={{
-            // border: "1px solid blue",
-            background: "lightgray",
-            width: "100vw",
+                    <div className="col-md-3 text-end">
+                        <Button onClick={logOutHandler} className="btn-danger">Logout</Button>
+                    </div>
 
-            // height: "205px"
+                </div>
+            </nav>
+            <Snowfall />
 
-        }}>
-
-            <div>
-                member home<br/>
-                {user.full_name}<br/>
-                <Button onClick={logOutHandler}>Logout</Button>
-
-                {event ?
-                    <div>
-                        Twoje wydarzenie {event.name}<br/>
-                        {event.description}<br/>
-                        kiedy to nastąpi: {event.date}<br/>
-                        autorem wydarzenia jest: {event.user_created.full_name}, {event.user_created.email}<br/>
-
-                        {event.completed ?
-                            <div>Wylosowałeś takiego typa: {event.member_to.full_name} ({event.member_to.email})</div>
-                            : <div>Losowanie w tym wydarzeniu jeszcze się nie odbyło.</div>
+            <div className="container-fluid">
+                <div className="row red-background">
+                    <div className="col-12">
+                        <p>member home</p>
+                        {event ?
+                            <div>
+                                <p>Twoje wydarzenie {event.name}</p>
+                                <p>{event.description}</p>
+                                <p>kiedy to nastąpi: {event.date}</p>
+                                <p>autorem wydarzenia jest: {event.user_created.full_name}, {event.user_created.email}</p>
+                                {event.completed ?
+                                    <div>Wylosowałeś takiego typa: {event.member_to.full_name} ({event.member_to.email})</div>
+                                    : <div>Losowanie w tym wydarzeniu jeszcze się nie odbyło.</div>
+                                }
+                            </div>
+                            :
+                            <div>loading</div>
                         }
-
                     </div>
-                    :
-                    <div>loading</div>
-                }
+                </div>
+                <div className="row santa-background">
+                    {/*<p className="child">box</p>*/}
+                    <p>Hoł hoł hoł...</p>
+                </div>
+                <div className="row justify-content-md-center" style={{
+                    padding: "0px 5vw"
+                }}>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={1}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={2}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={3}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={4}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={5}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={6}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={7}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={8}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={9}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={10}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={11}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={12}/></div>
+                    <div className="col-4 col-md-2"><Gift animuj={animuj} setAnimuj={setAnimuj} no={13}/></div>
+                </div>
             </div>
 
-            <div className="container_" style={{
-                // width: "100vw",
-                // background: "blue",
-
-            }}>
-                <div className="row" style={{
-                    // height: "80vh",
-                    // height: 'calc(100vw - 400px)',
-                    height: "25vw",
-                    // border: "1px solid yellow",
-                    margin: "0px",
-
-                    // height: "calc('600px - 150px');"
-                }}>
-                    top
-                </div>
-                {/*<div className="row">*/}
-                {/*    <div className="col-sm">*/}
-                {/*        One of three columns*/}
-                {/*    </div>*/}
-                {/*    <div className="col-sm">*/}
-                {/*        One of three columns*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-                <div className="row" style={{
-                    backgroundImage: `url(${bg})`,
-                    backgroundRepeat: "repeat-x",
-                    // height: "470px",
-                    height: "25vw",
-                    backgroundSize: "110%",
-                    // border: "1px solid red",
-                    width: "100vw",
-                    margin: "0px",
-
-
-                    // width: "100vw",
-                }}>
-                    ee
-                    {/* snieżek */}
-                    {/*<div className="col-sm" style={{*/}
-                    {/*    // border: "1px solid red",*/}
-                    {/*}}/>*/}
-                </div>
-
-
-                <div className="row" style={{
-                    background: "white",
-                    padding: "0px 20vw",
-                    // border: "1px solid green",
-                    width: "100vw",
-                    height: "150px",
-                    overflow: "hidden",
-                    margin: "0px",
-                }}>
-                    <div className="col-sm">
-                        <Gift animuj={animuj} setAnimuj={setAnimuj}/>
-                    </div>
-                    <div className="col-sm">
-                        <Gift animuj={animuj} setAnimuj={setAnimuj}/>
-                    </div>
-                    <div className="col-sm">
-                        <Gift animuj={animuj} setAnimuj={setAnimuj}/>
-                    </div>
-                    <div className="col-sm">
-                        <Gift animuj={animuj} setAnimuj={setAnimuj}/>
-                    </div>
-                    <div className="col-sm">
-                        <Gift animuj={animuj} setAnimuj={setAnimuj}/>
-                    </div>
-                    <div className="col-sm">
-                        <Gift animuj={animuj} setAnimuj={setAnimuj}/>
-                    </div>
-                </div>
-
-            </div>
-
-                {/*<div style={{*/}
-                {/*    height: "205px",*/}
-                {/*    border: "1px solid red",*/}
-                {/*    backgroundImage: `url(${footer})`,*/}
-                {/*    backgroundRepeat: "repeat-x",*/}
-                {/*    // backgroundSize: "100%",*/}
-                {/*    paddingTop: "40px",*/}
-                {/*    // background: `url(${footer}) 0px 0px 100% no-repeat`*/}
-
-                {/*}}>*/}
-                {/*    <div style={{*/}
-                {/*        // border: "1px solid green",*/}
-                {/*        // clear: "both"*/}
-                {/*    }}>*/}
-                {/*        <Gift animuj={animuj} setAnimuj={setAnimuj}/>*/}
-                {/*        <Gift animuj={animuj} setAnimuj={setAnimuj}/>*/}
-                {/*        <Gift animuj={animuj} setAnimuj={setAnimuj}/>*/}
-                {/*        <Gift animuj={animuj} setAnimuj={setAnimuj}/>*/}
-                {/*        <div style={{float: "top"}}>xx</div>*/}
-                {/*        /!*<Gift animuj={animuj} setAnimuj={setAnimuj}/>*!/*/}
-                {/*        /!*<Gift animuj={animuj} setAnimuj={setAnimuj}/>*!/*/}
-                {/*    </div>*/}
-                {/*    <div>*/}
-                {/*        xx*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-        </div>
+            
+        </>
     )
 }
 
