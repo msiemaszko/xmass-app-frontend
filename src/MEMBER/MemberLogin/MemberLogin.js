@@ -5,6 +5,10 @@ import {Button, Form} from "react-bootstrap";
 import AuthService from "../../services/auth-service";
 import {useHistory} from "react-router-dom";
 
+import './MemberLogin.css'
+import santaImage from '../../assets/images/santa.png'
+import * as url from "url";
+
 const MemberLogin = (props) => {
 
     const history = useHistory()
@@ -53,7 +57,15 @@ const MemberLogin = (props) => {
     }
 
     return (
-        <div className="w-50 mx-auto"> {/*style={{"border": "2px solid blue"}*/}
+        <div className="w-50 mx-auto my-5">
+
+            {/*santa image*/}
+            <div style={{
+                background: `url(${santaImage}) no-repeat center`,
+                backgroundSize: "200px",
+                height: '200px',
+            }}/>
+
             <h2 className="w-100 text-center">Sign in to xmass-app!</h2>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

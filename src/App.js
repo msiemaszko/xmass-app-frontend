@@ -15,6 +15,8 @@ import AuthService from './services/auth-service'
 import Activation from "./MEMBER/Activation/Activation";
 import MemberLogin from "./MEMBER/MemberLogin/MemberLogin";
 import MemberHome from "./MEMBER/MemberHome/MemberHome";
+import MemberNav from "./MEMBER/MemberNav/MemberNav";
+import Snowfall from "react-snowfall";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     // const [logged] = useAuth();
@@ -51,6 +53,8 @@ const App = () => {
                         path='/' exact
                         render={(props) => (
                             <>
+                                <Snowfall />
+                                <MemberNav isLogged={isLogged} setLogged={setLogged}/>
                                 {isLogged ?
                                     <MemberHome/> :
                                     <MemberLogin isLogged={isLogged} setLogged={setLogged}/>}

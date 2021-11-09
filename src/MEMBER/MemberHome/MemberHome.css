@@ -1,0 +1,66 @@
+.red-background {
+    background-image: url(../../assets/images/pattern-red.gif);
+    padding: 10px;
+    margin-bottom: -1px;
+
+    color: whitesmoke;
+    font: 25pt 'Lobster Two', cursive;
+}
+
+
+.santa-background {
+    background-image: url(../../assets/images/background-santa-claus.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    /*height: 120px;*/
+
+    position: relative;
+    z-index: -100;
+}
+
+.santa-background div {
+    color: whitesmoke;
+    font-family: 'Lobster Two', cursive;
+
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    /*border: 1px solid white;*/
+}
+
+.santa-background:before {
+    content:"";
+    display: block;
+    margin-top: 26%;
+}
+/*http://jsfiddle.net/5gqdkpvc/26/*/
+
+@media screen and (min-width: 500px) {
+    .santa-background {
+        /*height: 180px;*/
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .santa-background {
+        /*height: 300px;*/
+        /*height: 27vh;*/
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .santa-background {
+        /*height: 500px;*/
+        /*height: 42vh;*/
+    }
+}
+
+.event-data {
+    text-align: center;
+}
+.event-data p {
+    font-size: 25pt;
+}
+.event-data .details {
+    font-size: 18pt;
+}
