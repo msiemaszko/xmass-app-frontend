@@ -57,7 +57,7 @@ const MemberLogin = (props) => {
     }
 
     return (
-        <div className="w-50 mx-auto my-5">
+        <div className="form_container col-12 col-lg-5 col-md-6 mx-auto my-5">
 
             {/*santa image*/}
             <div style={{

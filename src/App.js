@@ -62,6 +62,12 @@ const App = () => {
                         )}
                     />
 
+                    <Route path='/activate/:activation_code'>
+                        <Snowfall/>
+                        <MemberNav isLogged={null} setLogged={null}/>
+                        <Activation setLogged={setLogged} />
+                    </Route>
+
                     {/*<Route*/}
                     {/*    path='/activate/:activation_code'*/}
                     {/*    render={(props) => (*/}
@@ -69,9 +75,9 @@ const App = () => {
                     {/*    )}*/}
                     {/*/>*/}
 
-                    <Route path='/activate/:activation_code'>
-                        <Activation setLogged={setLogged} />
-                    </Route>
+                    {/*<Route path='/activate/:activation_code'>*/}
+                    {/*    <Activation setLogged={setLogged} />*/}
+                    {/*</Route>*/}
 
 
                     <Route path='/user/login' render={(props) => (

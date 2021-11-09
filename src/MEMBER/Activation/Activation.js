@@ -5,6 +5,7 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import ErrorAlert from "../../components/Alert/ErrorAlert";
 import Loader from "../../components/Loader/Loader";
 import AuthService from '../../services/auth-service'
+import santaImage from "../../assets/images/santa.png";
 
 const Activation = (props) => {
 
@@ -16,14 +17,6 @@ const Activation = (props) => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleNameChange = event => {
-        setName(event.target.value)
-    }
-
-    const handlePasswordChange = event => {
-        setPassword(event.target.value)
-    }
-
     // error states
     const [doesShowError, setDoesShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -32,6 +25,15 @@ const Activation = (props) => {
         setDoesShowError(true);
         setErrorMessage(errorMessage);
     }
+
+    const handleNameChange = event => {
+        setName(event.target.value)
+    }
+
+    const handlePasswordChange = event => {
+        setPassword(event.target.value)
+    }
+
     const handleFormSubmit = event => {
         event.preventDefault();
         ApiService.post("/api/invitation/accept/" + activation_code, {
@@ -51,12 +53,12 @@ const Activation = (props) => {
                     }
 
                     // oszukane logowanie dla membera
-                    AuthService.storeLoginDataFromResponse(response)
-                    props.setLogged(true)
+                    AuthService.storeLoginDataFromResponse(response);
+                    props.setLogged(true);
                     history.push("/");
                 }
                 else {
-                    showError(result.data.detail)
+                    showError(result.data.detail);
                 }
             })
     }
@@ -64,33 +66,49 @@ const Activation = (props) => {
     useEffect(() => {
         ApiService.get("/api/invitation/details/" + activation_code)
             .then(result => {
-                const invitation_ = result.data;
-                setInvitation(invitation_)
-            })
-        ;
+                if (result.status === 200) {
+                    setInvitation(result.data)
+                    console.log(result.data)
+                }
+            });
     }, []);
 
 
     return (
         <> {invitation ?
-            <div className="w-50 mx-auto">
-                Witaj {invitation.email} !<br/>
-                Zostałeś zaproszony na wspólne wydarzenie prezentowe
-                <div>
-                    {invitation.event.name}
-                </div>
-                invitation.event.opis
-                <br/>
+            <div className="form_container col-12 col-lg-6 col-md-8  mx-auto my-5">
 
-                Wypełnij swoje pozostałe dane, aby wziąć udział w losowaniu.
-                <br/>
-                <br/>
+                {/*santa image*/}
+                <div style={{
+                    background: `url(${santaImage}) no-repeat center`,
+                    backgroundSize: "200px",
+                    height: '200px',
+                }}/>
+                <h2 className="w-100 text-center">You got event invitation!</h2>
+
+
+                {/*Witaj {invitation.email} !<br/>*/}
+                <p>Zostałeś zaproszony na wspólne wydarzenie prezentowe</p>
+                <p>{invitation.event.name}</p>
+                <p>{invitation.event.description}</p>
+
+                <p>Wypełnij swoje pozostałe dane, aby wziąć udział w losowaniu.</p>
                 <div> {/*style={{"border": "2px solid blue"}*/}
                     <Form onSubmit={handleFormSubmit}>
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                             <Form.Label column sm="2">Email</Form.Label>
                             <Col sm="10">
-                                <Form.Control plaintext readOnly defaultValue={invitation.email}/>
+                                <Form.Control
+                                    plaintext
+                                    readOnly={true}
+                                    defaultValue={invitation.email}
+                                    style={{
+                                        padding: '5px',
+                                        border: '1px solid lightgray',
+                                        borderRadius: '5px',
+                                        color: 'gray'
+                                    }}
+                                />
                             </Col>
                         </Form.Group>
 

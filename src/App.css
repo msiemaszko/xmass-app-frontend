@@ -17,3 +17,7 @@
 body {
   overflow-x: hidden;
 }
+
+.form_container {
+  padding: 20px
+}
