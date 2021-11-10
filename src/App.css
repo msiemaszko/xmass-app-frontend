@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap&subset=latin,latin-ext');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@0;1&display=swap&subset=latin,latin-ext');*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two&display=swap');
+
+/*@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Lobster&family=Lobster+Two&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
 .main-container {
   padding: 20pt;

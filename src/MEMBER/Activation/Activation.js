@@ -6,6 +6,7 @@ import ErrorAlert from "../../components/Alert/ErrorAlert";
 import Loader from "../../components/Loader/Loader";
 import AuthService from '../../services/auth-service'
 import santaImage from "../../assets/images/santa.png";
+import ChristmasButton from "../../components/ChristmasButton/ChristmasButton";
 
 const Activation = (props) => {
 
@@ -138,8 +139,12 @@ const Activation = (props) => {
                             </Col>
                         </Form.Group>
 
-                        <Form.Group className="w-100 text-center">
-                            <Button variant="danger" type="submit">Let me in!</Button>
+                        {/*<Form.Group className="w-100 text-center">*/}
+                        {/*    <Button variant="danger" type="submit">Let me in!</Button>*/}
+                        {/*</Form.Group>*/}
+
+                        <Form.Group className="w-100 text-center" style={{paddingTop: '20px'}}>
+                            <ChristmasButton type="submit" value="Let me in!"/>
                         </Form.Group>
                     </Form>
 
@@ -149,6 +154,7 @@ const Activation = (props) => {
                         doesShowError={doesShowError}
                         hideError={hideError}
                     />
+
                 </div>
             </div>
 

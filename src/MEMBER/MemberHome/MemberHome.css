@@ -1,10 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+.event-data {
+    text-align: center;
+    font-size: 25pt;
+}
+
+
 .red-background {
     background-image: url(../../assets/images/pattern-red.gif);
-    padding: 10px;
+    padding-top: 20px;
     margin-bottom: -1px;
 
     color: whitesmoke;
-    font: 25pt 'Lobster Two', cursive;
+    /*font: 25pt 'Lobster Two', cursive;*/
+    font-family: 'Caveat', cursive;
+    line-height: 15pt;
+    font-size: 20pt;
+}
+
+    .red-background p {
+        font-size: 15pt;
+    }
+
+.santa-background p {
+    font-size: 18pt;
 }
 
 
@@ -20,7 +40,12 @@
 
 .santa-background div {
     color: whitesmoke;
-    font-family: 'Lobster Two', cursive;
+    /*color: black;*/
+    /*font-family: 'Lobster Two', cursive;*/
+    /*font-family: 'Lobster';*/
+    /*font-family: 'Bigelow Rules', cursive;*/
+    /*font-family: 'Clicker Script', cursive;*/
+    font-family: 'Caveat', cursive;
 
     position: relative;
     width: 50%;
@@ -35,32 +60,17 @@
 }
 /*http://jsfiddle.net/5gqdkpvc/26/*/
 
-@media screen and (min-width: 500px) {
-    .santa-background {
-        /*height: 180px;*/
+
+/* Small devices < 600px */
+@media only screen and (max-width: 600px) {
+    .santa-background h1 {
+        font-size: 15pt;
     }
 }
 
-@media screen and (min-width: 700px) {
-    .santa-background {
-        /*height: 300px;*/
-        /*height: 27vh;*/
+/* Large devices > 992px */
+@media only screen and (min-width: 992px) {
+    .santa-background h1 {
+        font-size: 33pt;
     }
-}
-
-@media screen and (min-width: 1201px) {
-    .santa-background {
-        /*height: 500px;*/
-        /*height: 42vh;*/
-    }
-}
-
-.event-data {
-    text-align: center;
-}
-.event-data p {
-    font-size: 25pt;
-}
-.event-data .details {
-    font-size: 18pt;
 }

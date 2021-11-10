@@ -8,6 +8,7 @@ import {useHistory} from "react-router-dom";
 import './MemberLogin.css'
 import santaImage from '../../assets/images/santa.png'
 import * as url from "url";
+import ChristmasButton from "../../components/ChristmasButton/ChristmasButton";
 
 const MemberLogin = (props) => {
 
@@ -57,7 +58,7 @@ const MemberLogin = (props) => {
     }
 
     return (
-        <div className="form_container col-12 col-lg-5 col-md-6 mx-auto my-5">
+        <div className="form_container col-12 col-lg-5 col-md-6 mx-auto my-3">
 
             {/*santa image*/}
             <div style={{
@@ -95,8 +96,13 @@ const MemberLogin = (props) => {
                 {/*<Form.Group className="mb-3" controlId="formBasicCheckbox">*/}
                 {/*    <Form.Check type="checkbox" label="Check me out" />*/}
                 {/*</Form.Group>*/}
-                <Form.Group className="w-100 text-center">
-                    <Button variant="danger" type="submit">Let me in!</Button>
+
+                {/*<Form.Group className="w-100 text-center">*/}
+                {/*    <Button variant="danger" type="submit">Let me in!</Button>*/}
+                {/*</Form.Group>*/}
+
+                <Form.Group className="w-100 text-center" style={{paddingTop: '20px'}}>
+                    <ChristmasButton type="submit" value="Let me in!"/>
                 </Form.Group>
             </Form>
 
