@@ -31,7 +31,7 @@ const Card = (props) => {
                     height: '130px',
                 }}/>
                 <h4>Losowanie zakończone!</h4>
-                <p>Twoja wylosowana osoba to:</p>
+                <p>Osoba, której Św. Mikołajem będziesz w tym roku to:</p>
                 <h2>{props.member_to ? props.member_to.full_name : ''}</h2>
             </Modal.Body>
             <Modal.Footer>

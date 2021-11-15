@@ -77,7 +77,7 @@ const Activation = (props) => {
 
     return (
         <> {invitation ?
-            <div className="form_container col-12 col-lg-6 col-md-8  mx-auto my-5">
+            <div className="form_container col-12 col-lg-6 col-md-8  mx-auto my-3">
 
                 {/*santa image*/}
                 <div style={{
@@ -89,11 +89,12 @@ const Activation = (props) => {
 
 
                 {/*Witaj {invitation.email} !<br/>*/}
-                <p>Zostałeś zaproszony na wspólne wydarzenie prezentowe</p>
+                <p>Zostałeś zaproszony na wspólne wydarzenie prezentowe!</p>
                 <p>{invitation.event.name}</p>
                 <p>{invitation.event.description}</p>
 
-                <p>Wypełnij swoje pozostałe dane, aby wziąć udział w losowaniu.</p>
+                <p>Aby wziąć udział w losowaniu musisz uzupełnić dane swojego profilu.
+                </p>
                 <div> {/*style={{"border": "2px solid blue"}*/}
                     <Form onSubmit={handleFormSubmit}>
                         <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
@@ -118,11 +119,15 @@ const Activation = (props) => {
                             <Col sm="10">
                                 <Form.Control
                                     type="text"
-                                    placeholder="Koń Rafał"
+                                    placeholder="Twoja nazwa użytkownika..."
                                     onChange={handleNameChange}
                                     value={name}
                                     required
                                 />
+                                <Form.Text className="text-muted">
+                                    Ta nazwa będzie użyta podczas losowania.
+                                    Zadbaj o to, aby osoba, która Cię wylosuje widziała z kim ma do czynienia :)
+                                </Form.Text>
                             </Col>
                         </Form.Group>
 
@@ -131,11 +136,15 @@ const Activation = (props) => {
                             <Col sm="10">
                                 <Form.Control
                                     type="password"
-                                    placeholder="Ptaki latajo kluczem"
+                                    placeholder="Twoje hasło logowania..."
                                     onChange={handlePasswordChange}
                                     value={password}
                                     required
                                 />
+                                <Form.Text className="text-muted">
+                                    Ustaw hasło do swojego profilu i je zapamiętaj.
+                                    Tylko za jego pomocą będziesz mógł wziąć udział w losowaniu.
+                                </Form.Text>
                             </Col>
                         </Form.Group>
 
@@ -143,8 +152,8 @@ const Activation = (props) => {
                         {/*    <Button variant="danger" type="submit">Let me in!</Button>*/}
                         {/*</Form.Group>*/}
 
-                        <Form.Group className="w-100 text-center" style={{paddingTop: '20px'}}>
-                            <ChristmasButton type="submit" value="Let me in!"/>
+                        <Form.Group className="w-100 text-center" style={{paddingTop: '10px'}}>
+                            <ChristmasButton type="submit" value="Aktywuj profil !"/>
                         </Form.Group>
                     </Form>
 

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {useParams} from "react-router";
 import ErrorAlert from "../../components/Alert/ErrorAlert";
 import {Button, Form} from "react-bootstrap";
 import AuthService from "../../services/auth-service";
@@ -7,7 +6,6 @@ import {useHistory} from "react-router-dom";
 
 import './MemberLogin.css'
 import santaImage from '../../assets/images/santa.png'
-import * as url from "url";
 import ChristmasButton from "../../components/ChristmasButton/ChristmasButton";
 
 const MemberLogin = (props) => {
@@ -67,7 +65,7 @@ const MemberLogin = (props) => {
                 height: '200px',
             }}/>
 
-            <h2 className="w-100 text-center">Sign in to xmass-app!</h2>
+            <h2 className="w-100 text-center">Zaloguj się do xmas-app!</h2>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

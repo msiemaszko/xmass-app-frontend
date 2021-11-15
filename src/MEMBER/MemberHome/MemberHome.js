@@ -28,7 +28,6 @@ const MemberHome = (props) => {
             <div className="container-fluid">
                 <div className="row red-background">
                     <div className="col-12 text-center event-data">
-                        {/* <p>member home</p> */}
                         {event ?
                             <>
                                 <h1>{event.name}</h1>
@@ -52,12 +51,25 @@ const MemberHome = (props) => {
                         <div className="child event-data">
                             {/*<p>Twoje wydarzenie: {event.name}</p>*/}
                             {/*{event.description}*/}
-                            <h1>
                                 {event.completed
-                                ? "Możesz już wziąć udział w losowaniu :)"
-                                : "Losowanie nie jest jeszcze gotowe."
+                                    ? <>
+                                        <h1>Możesz już wziąć udział w losowaniu!</h1>
+                                        <p>Kliknij na jeden z poniższych prezentów, aby przekonać się czyim<br/>
+                                            Świętym Mikołajem będziesz w tym roku.</p>
+                                    </>
+                                    : <>
+                                        <h1>Losowanie w tym wydarzeniu jeszcze nie jest dostępne.</h1>
+                                        {/*<p>Oczekujemy, aż wszyscy zaproszeniu uzupełnią swoje profile...</p>*/}
+                                        {/*<p>Wszyscy zaproszeni użytkownicy muszą uzupełnić swoje profile.</p>*/}
+                                        {/*<p>Kiedy wszyscy inni użytkownicy będą gotowi, poinformujemy Cię osobnym mailem.</p>*/}
+                                        <p>
+                                            Mikołaj się cieszy z Twojego udziału w zabawie!<br/>
+                                            Oczekuję na zgłoszenia od wszystkich osób, jak tylko je dostanę rozpoczniemy
+                                            losowanie. Poinformuję Cię o tym osobnym mailem.<br/>
+                                            Do tego czasu bądź cierpliwy, bo będzie ruzga!
+                                        </p>
+                                    </>
                                 }
-                            </h1>
                         </div>
                     :<Loader/>
                     }
@@ -66,9 +78,7 @@ const MemberHome = (props) => {
                 {event && event.completed ?
                     <>
                         {/* gift panel */}
-                        <div className="row justify-content-md-center" style={{
-                            padding: "0px 5vw"
-                        }}>
+                        <div className="row justify-content-md-center gift_block">
 
                             {/*TODO: Sprawdzic to mapowanie*/}
                             {[...Array(10)].map((x, i) =>

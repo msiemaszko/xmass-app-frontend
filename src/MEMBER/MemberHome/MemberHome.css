@@ -6,6 +6,11 @@
     font-size: 25pt;
 }
 
+.gift_block {
+    padding: 0 5vw;
+    background: white;
+}
+
 
 .red-background {
     background-image: url(../../assets/images/pattern-red.gif);
@@ -20,37 +25,39 @@
 }
 
     .red-background p {
-        font-size: 15pt;
+        font-size: 18pt;
     }
 
-.santa-background p {
-    font-size: 18pt;
-}
-
-
 .santa-background {
-    background-image: url(../../assets/images/background-santa-claus.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    /*height: 120px;*/
+    background: url(../../assets/images/background-santa-claus.png) bottom center no-repeat,
+                url(../../assets/images/pattern-red.gif) left top repeat;
+    background-size: 100%, auto;
 
+    padding-bottom: 80px;
     position: relative;
-    z-index: -100;
+    z-index: -1;
+    margin-bottom: -1px;
 }
 
 .santa-background div {
     color: whitesmoke;
-    /*color: black;*/
-    /*font-family: 'Lobster Two', cursive;*/
-    /*font-family: 'Lobster';*/
-    /*font-family: 'Bigelow Rules', cursive;*/
-    /*font-family: 'Clicker Script', cursive;*/
     font-family: 'Caveat', cursive;
+    /*font-size: 2pt;*/
+    line-height: 16pt;
 
     position: relative;
-    width: 50%;
     margin: 0 auto;
     /*border: 1px solid white;*/
+}
+
+.santa-background div h1 {
+    font-size: 18pt;
+}
+.santa-background div p {
+    width: 80%;
+    margin: 0 auto;
+    /*border: 1px solid yellow;*/
+    font-size: 16pt;
 }
 
 .santa-background:before {
